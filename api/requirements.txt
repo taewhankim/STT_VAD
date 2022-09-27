@@ -1,0 +1,13 @@
+torch
+torchaudio
+tensorflow==2.4.0
+SoundFile
+onnxruntime
+pydub
+gunicorn
+flask
+ffmpeg-python
+librosa
+astropy
+requests
+h5py

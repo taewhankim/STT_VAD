@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  api:
+    image: aistudio/ver_001:speech2text # dockerfile 에 기록된 베이스이미지로 container 를 만들어서 이 컨테이너의 이름을 정의
+    container_name: speech2text # 컨테이너 이름
+    restart: always
+    build: ./api # 이미지를 dockerfile 에 작성하고, 그것을 자동으로 빌드하여 베이스 이미지로 지정할때는 docker-compose 에 dockerfile 이 작성된 위치를 build 옵션을 기록하기
+    volumes: ['/mnt:/mnt']
+    networks:
+      # 도커 컨테이너는 독립적인 환경이기에, 서로 통신이 불가능. 각 컨테이너끼리 통신을 하기 위해서는 networks 를 정의해줘야함
+      speech2text_net:
+        aliases:
+          - s2t.dock
+    # host 와 연결할 포트 번호를 설정, 외부에 노출되진 않음, 외부에 노출되려면 ports 에 작성 [호스트포트]:[도커포트]
+    expose:
+      - "9003" # 외부로 오픈되는 포트번호기록
+    ports:
+      - "9003:9003" # 호스트:도커내부컨테이너
+    runtime: nvidia # nvidia docker 실행
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all # GPU 당 하나의 컨테이너를 실행하고 싶을경우, all 대신 GPU 아이디를 기록할것
+
+
+  nginx:
+    image: aistudio/ver_001:nginx_s2t
+    container_name: nginx_s2t
+    restart: always
+    build: ./nginx
+    networks:
+      speech2text_net:
+        aliases:
+          - nginx_s2t.dock
+    expose:
+      - "9002"
+    ports:
+      - "9002:9002"
+
+networks:
+  speech2text_net: # docker-compose 에 정의하기 전에 서버에서 network 를 만들어주기, docker network create speech2text_net
+    external:
+      name: speech2text_net

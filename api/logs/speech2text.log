@@ -1,0 +1,38 @@
+[2021/06/21 14:47:16] speech2text ERROR: Exception on /speech2text [GET]
+Traceback (most recent call last):
+  File "/home/neosungsin/anaconda3/envs/korean_stt/lib/python3.7/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/neosungsin/anaconda3/envs/korean_stt/lib/python3.7/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/neosungsin/anaconda3/envs/korean_stt/lib/python3.7/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/neosungsin/anaconda3/envs/korean_stt/lib/python3.7/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "speech2text.py", line 30, in service
+    request_data = json.loads(flask.request.data.decode("utf-8"))
+  File "/home/neosungsin/anaconda3/envs/korean_stt/lib/python3.7/json/__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "/home/neosungsin/anaconda3/envs/korean_stt/lib/python3.7/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/home/neosungsin/anaconda3/envs/korean_stt/lib/python3.7/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+[2021/06/21 14:48:03] speech2text ERROR: Exception on /speech2text [GET]
+Traceback (most recent call last):
+  File "/home/neosungsin/anaconda3/envs/korean_stt/lib/python3.7/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/neosungsin/anaconda3/envs/korean_stt/lib/python3.7/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/neosungsin/anaconda3/envs/korean_stt/lib/python3.7/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/neosungsin/anaconda3/envs/korean_stt/lib/python3.7/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "speech2text.py", line 30, in service
+    request_data = json.loads(flask.request.data.decode("utf-8"))
+  File "/home/neosungsin/anaconda3/envs/korean_stt/lib/python3.7/json/__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "/home/neosungsin/anaconda3/envs/korean_stt/lib/python3.7/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/home/neosungsin/anaconda3/envs/korean_stt/lib/python3.7/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
